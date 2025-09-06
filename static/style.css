@@ -30,13 +30,24 @@ nav a{padding:.5rem .75rem; border-radius:999px; font-weight:600; color:var(--mu
 nav a:hover{background:#232323; color:var(--brand)}
 .nav-cta{background:var(--brand); color:#181818 !important}
 .nav-cta:hover{background:var(--brand-2)}
-.hamburger{display:none; background:none; border:0; font-size:1.2rem; color:var(--brand)}
-@media (max-width: 900px){
-  nav ul{display:none}
-  .hamburger{display:block}
-  .mobile-menu{display:none; position:absolute; left:0; right:0; top:100%; background:#232323; border-bottom:1px solid #232323}
-  .mobile-menu a{display:block; padding:1rem; border-top:1px solid #232323; color:var(--muted)}
-}
+.hamburger{display:none; background:none; border:0; font-size:1.2rem; color:var(--brand); cursor:pointer}
+.hamburger:focus{outline:2px solid rgba(255,127,42,.25); border-radius:6px}
+
+/* Mobile menu base */
+.mobile-menu{display:none; position:absolute; left:0; right:0; top:100%; background:#232323; border-bottom:1px solid #232323; z-index:60; padding:0.5rem 1rem}
+.mobile-menu ul{list-style:none; margin:0; padding:0}
+.mobile-menu li{border-top:1px solid rgba(255,255,255,0.03);}
+.mobile-menu a{display:block; padding:0.9rem 0.5rem; color:var(--muted); font-weight:700}
+.mobile-menu a.nav-cta{display:inline-block; margin-top:.5rem; background:var(--brand); color:#181818; padding:.6rem .9rem; border-radius:10px}
+
+/* Desktop-only links class (kept separate) */
+.desktop-links{display:flex; gap:1rem; align-items:center; margin:0; padding:0}
+
+/* About image section style */
+.about-image{padding:2rem 1rem 0; background:linear-gradient(180deg,#181818,#181818); border-bottom:1px solid #232323}
+.about-main-logo{max-width:360px; width:100%; height:auto}
+
+/* Hero and other styles (unchanged) */
 .hero{
   position:relative; min-height:78vh; display:grid; place-items:center; text-align:center; color:#fff; overflow:hidden;
   background:linear-gradient(180deg, rgba(24,24,24,.85), rgba(24,24,24,.95));
@@ -95,14 +106,22 @@ footer{background:#232323; color:#ffb86b}
 .foot h4{margin:.2rem 0 1rem; color:var(--brand)}
 .foot a{color:#ffb86b}
 .sub{border-top:1px solid #232323; padding:1rem; text-align:center; font-size:.9rem}
+
+/* Responsive rules */
 @media (max-width: 900px){
   .about-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr}
-  .nav{flex-direction:column; align-items:flex-start;}
+  .nav{flex-direction:row; align-items:center;}
   .header-logo{height:48px;}
   .section-head{flex-direction:column; align-items:flex-start;}
+  .desktop-links{display:none} /* hide desktop links on mobile */
+  .hamburger{display:block}
+  /* ensure mobile top area doesn't overflow when mobile menu is open */
+  header{overflow:visible}
 }
+
+/* Smaller phones */
 @media (max-width: 640px){
   .product-grid{grid-template-columns:1fr}
   .hero-inner{padding:3rem 0.5rem 2rem;}
@@ -111,9 +130,17 @@ footer{background:#232323; color:#ffb86b}
   .btn, .btn-primary, .btn-ghost{padding:0.7rem 0.9rem; font-size:1rem;}
   .kpis{grid-template-columns:1fr 1fr;}
 }
+
+/* Keep consistent image fit for cards & about card */
 .card img, .about-card img {
   width:100%; height:auto; object-fit:cover;
 }
 .container {
   width:100%; max-width:1200px; margin:0 auto; padding:0 0.5rem;
 }
+
+/* When mobile menu is open we show it (JS adds inline style or .open class) */
+.mobile-menu.open { display:block; }
+
+/* Small visual polish for mobile menu */
+.mobile-menu a:hover{background:#2a2a2a; color:var(--brand)}
