@@ -209,7 +209,7 @@ footer{background:#232323; color:#ffb86b}
 
 /* Larger, responsive about logo */
 .about-main-logo {
-  max-width: 360px;   /* larger than before */
+  max-width: 400px;   /* larger than before */
   width: 100%;
   height: auto;
   border-radius: 12px;
@@ -252,3 +252,11 @@ footer{background:#232323; color:#ffb86b}
     padding: 1rem;
   }
 }
+.about-grid {
+  grid-template-columns: 400px 1fr; /* logo column bigger */
+}
+
+.about-main-logo {
+  max-width: 380px; /* allow image itself to be bigger */
+}
+
