@@ -196,3 +196,59 @@ footer{background:#232323; color:#ffb86b}
     margin: 1rem auto;
   }
 }
+
+
+
+/* Make left logo column and right copy column */
+.about-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr; /* left column reserved for logo, right flexible */
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Larger, responsive about logo */
+.about-main-logo {
+  max-width: 360px;   /* larger than before */
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  padding: 0.75rem;
+  background: var(--surface);
+  border: 1px solid #232323;
+  display: block;
+}
+
+/* Separate full-width section that holds the about-card and centers it */
+.about-card-section {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  background: transparent; /* adjust if you want a different background */
+}
+.centered-card {
+  max-width: 880px;
+  margin: 0 auto;         /* centers horizontally across the page */
+  padding: 1.2rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Slight visual spacing between the main about section and card section */
+.about + .about-card-section { margin-top: -0.5rem; }
+
+/* Mobile: stack logo above copy, and make card fluid */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr; /* stack columns on small screens */
+    gap: 1rem;
+  }
+  .about-main-logo {
+    max-width: 260px;
+    margin: 0 auto; /* center logo on mobile */
+  }
+  .centered-card {
+    max-width: 100%;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+}
