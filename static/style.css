@@ -144,3 +144,55 @@ footer{background:#232323; color:#ffb86b}
 
 /* Small visual polish for mobile menu */
 .mobile-menu a:hover{background:#2a2a2a; color:var(--brand)}
+
+
+/* ---------- About layout: logo left, copy right; minimal edits ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* left fixed column for logo, right flexible for text */
+  gap: 2rem;
+  align-items: start; /* align items to top by default */
+}
+
+/* Logo container: keep it simple and consistent */
+.about-image {
+  display: block;
+  padding: 0;
+  background: transparent;
+}
+.about-image-inner { padding: 0; }
+
+/* Logo image sizing */
+.about-main-logo {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  padding: 0.6rem;
+  background: var(--surface);
+  border: 1px solid #232323;
+  display: block;
+}
+
+/* Center the about-card horizontally inside the right column */
+.centered-card {
+  max-width: 760px;      /* prevents the card from getting too wide */
+  margin: 1.25rem auto;  /* centers it horizontally in the right column */
+  text-align: left;
+}
+
+/* On small screens stack: logo above copy */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr; /* single column on mobile */
+    gap: 1rem;
+  }
+  .about-main-logo {
+    max-width: 220px;
+    margin: 0 auto; /* keep logo centered on mobile */
+  }
+  .centered-card {
+    max-width: 100%;
+    margin: 1rem auto;
+  }
+}
